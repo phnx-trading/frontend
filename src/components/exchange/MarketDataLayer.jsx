@@ -9,10 +9,8 @@ import {
   getSymbolOHLCV 
 } from '../../helpers/AppDataHelper.js';
 import MarketHeader from './MarketHeader.jsx';
-import MarketSymbolInfo from './MarketSymbolInfo.jsx';
 import MarketTrades from './MarketTrades.jsx';
 import MarketOrderbook from './MarketOrderbook.jsx';
-import MarketTicker from './MarketTicker.jsx';
 
 class MarketDataLayer extends React.Component {
   constructor(props) {
@@ -26,7 +24,7 @@ class MarketDataLayer extends React.Component {
       symbolInfo: { },
       symbolInfoLoaded: false,
 
-      trades: [],
+      trades: [ ],
       tradesLoaded: false,
 
       orderbook: { },
@@ -77,18 +75,18 @@ class MarketDataLayer extends React.Component {
           tickerLoaded={ this.state.tickerLoaded }
           symbolInfo={ this.state.symbolInfo }
           symbolInfoLoaded={ this.state.symbolInfoLoaded } />
-        <MarketTicker
-          ticker={ this.state.ticker }
-          tickerLoaded={ this.state.tickerLoaded } />
-        <MarketSymbolInfo
-          symbolInfo={ this.state.symbolInfo }
-          symbolInfoLoaded={ this.state.symbolInfoLoaded } />
-        <MarketTrades
-          trades={ this.state.trades }
-          tradesLoaded={ this.state.tradesLoaded } />
-        <MarketOrderbook
-          orderbook={ this.state.orderbook }
-          orderbookLoaded={ this.state.orderbookLoaded } />
+        <div className="market-widget-row">
+          <MarketTrades
+            trades={ this.state.trades }
+            tradesLoaded={ this.state.tradesLoaded }
+            symbolInfo={ this.state.symbolInfo }
+            symbolInfoLoaded={ this.state.symbolInfoLoaded } />
+          <MarketOrderbook
+            orderbook={ this.state.orderbook }
+            orderbookLoaded={ this.state.orderbookLoaded }
+            symbolInfo={ this.state.symbolInfo }
+            symbolInfoLoaded={ this.state.symbolInfoLoaded } />
+        </div>
       </div>
     );
   }

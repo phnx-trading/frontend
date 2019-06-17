@@ -19,6 +19,11 @@ body {
   width: 100vw;
 }
 
+.number {
+  font-family: 'Ubuntu Mono', monospace;
+  text-align: right;
+}
+
 pre {
   background: #eee;
   padding: 2rem;
@@ -27,6 +32,75 @@ pre {
 }
 
 .market {
+  flex: 1;
 
+  .market-widget-row {
+    display: flex;
+  }
+
+  .orderbook {
+    flex: 1;
+
+    .depth-chart {
+      display: flex;
+      align-items: flex-end;
+      height: 10rem;
+
+      .bid {
+        background: green;
+      }
+
+      .ask {
+        background: red;
+      }
+    }
+
+    .orderbook-table {
+      display: flex;
+
+      .scroll-wrapper {
+        flex: 1;
+        height: 20rem;
+        overflow: auto;
+
+        table {
+          width: 100%;
+
+          th {
+            position: sticky;
+            top: 0;
+            background: white;
+          }
+
+          th, td {
+            padding: 0.4rem;
+          }
+        }
+      }
+    }
+  }
+
+  .trades {
+    flex: 1;
+
+    .scroll-wrapper {
+      height: 30rem;
+      overflow: auto;
+
+      table {
+        width: 100%;
+
+        th {
+          position: sticky;
+          top: 0;
+          background: white;
+        }
+
+        th, td {
+          padding: 0.4rem;
+        }
+      }
+    }
+  }
 }
 

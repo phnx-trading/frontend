@@ -49,7 +49,7 @@ export const getSymbolTrades = (exchange, symbol) => {
 export const getSymbolOrderbook = (exchange, symbol) => {
   return new Promise((resolve, reject) => {
     $({
-      url: `/exchanges/${ exchange }/markets/${ symbol }/orderbook`,
+      url: `/exchanges/${ exchange }/markets/${ symbol }/orderbook?agg`,
       api: `exchange`,
       success: ({ result }) => resolve(result),
       error: reject
