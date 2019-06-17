@@ -1,0 +1,10 @@
+{
+  "short_name": "phnx",
+  "name": "phnx | trading risen again",
+  "icons": [],
+  "start_url": "/",
+  "background_color": "#F5F9FF",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#3039b2"
+}

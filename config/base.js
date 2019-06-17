@@ -1,29 +1,26 @@
 'use strict';
 
 var webpack = require('webpack');
-var MiniCssExtractPlugin = require('mini-css-extract-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var path = require('path');
-var CopyPlugin = require('copy-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 var git = require('git-rev-sync');
 var { GenerateSW } = require('workbox-webpack-plugin');
-
-let index = `src/index.html`;
 
 module.exports = {
   cache: true,
   entry: {
     main: [
       '@babel/polyfill',
-      './src/index.tsx',
+      './src/index.jsx',
       './scss/global.scss'
     ],
     vendor: [
       'react',
-      'react-dom'
+      'react-dom',
+      'react-redux',
+      'react-router'
     ]
-  },
-  resolve: {
-    extensions: ['.ts', '.tsx', '.js']
   },
   output: {
     path: path.resolve(__dirname.split('/config')[0], 'dist'),
@@ -33,21 +30,20 @@ module.exports = {
   },
   devtool: 'source-map',
   module: {
-    rules: [
+    loaders: [
       {
-        test: /\.tsx?$/,
-        loaders: ['awesome-typescript-loader', 'eslint-loader'],
+        test: /\.jsx$/,
+        loader: 'babel-loader',
+        exclude: /(node_modules|bower_components)/
+      },
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
         exclude: /(node_modules|bower_components)/
       },
       {
         test: /\.scss$/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader
-          },
-          `css-loader`,
-          `sass-loader`
-        ]
+        loader: ExtractTextPlugin.extract(['css-loader', 'sass-loader'])
       }
     ]
   },
@@ -56,13 +52,13 @@ module.exports = {
   },
   plugins: [
     new webpack.ExtendedAPIPlugin(),
-    new MiniCssExtractPlugin({
+    new ExtractTextPlugin({
       filename: 'styles.bundle.css',
       allChunks: true,
     }),
-    new CopyPlugin([
+    CopyWebpackPlugin([
       {
-        from: index,
+        from: `src/index.html`,
         to: `index.html`,
         transform: (content) => {
           return content

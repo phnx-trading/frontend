@@ -1,0 +1,29 @@
+.market-navigation {
+  flex: 0 0 35rem;
+  display: flex;
+  height: 100vh;
+
+  ul {
+    overflow: auto;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+
+    li {
+      &.active {
+        & > * {
+          color: red;
+        }
+      }
+
+      & > * {
+        color: black;
+        display: block;
+        cursor: pointer;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+      }
+    }
+  }
+}
+

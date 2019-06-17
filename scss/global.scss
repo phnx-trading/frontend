@@ -1,0 +1,27 @@
+@import './components/market-navigation.scss';
+
+html {
+  font-size: 8px;
+}
+
+body {
+  font-size: 1.75rem;
+}
+
+.exchange-main {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+
+.market-data-demo {
+  flex: 1;
+  overflow: auto;
+
+  pre {
+    background: #eee;
+    padding: 2rem;
+    max-height: 20rem;
+    overflow: auto;
+  }
+}

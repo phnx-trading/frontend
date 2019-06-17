@@ -3,15 +3,22 @@
 var webpack = require('webpack');
 var config = require('./base.js');
 var git = require('git-rev-sync');
-var path = require(`path`);
 
-config.mode = `development`;
+config.module.loaders.push(
+  {
+    test: /\.js$/,
+    exclude: /node_modules/,
+    loaders: ['babel-loader', 'eslint-loader']
+  }
+);
 
-config.devServer = {
-  contentBase: path.join(__dirname, 'dist'),
-  compress: true,
-  port: 9000
-};
+config.module.loaders.push(
+  {
+    test: /\.jsx$/,
+    exclude: /node_modules/,
+    loaders: ['babel-loader', 'eslint-loader']
+  }
+);
 
 config.plugins.push(
   new webpack.LoaderOptionsPlugin({
@@ -28,6 +35,14 @@ config.plugins.push(
   new webpack.DefinePlugin({
     'process.env.NODE_ENV': `'development'`,
     'process.env.GIT_TAG': `'development'`
+  })
+);
+
+config.plugins.push(
+  new webpack.optimize.CommonsChunkPlugin({
+    name: 'vendor',
+    minChunks: Infinity,
+    filename: 'vendor.bundle.min.js'
   })
 );
 
