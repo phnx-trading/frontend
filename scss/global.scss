@@ -1,4 +1,9 @@
+@import './utilities/variables.scss';
+@import './utilities/loading-spinner.scss';
+
 @import './components/market-navigation.scss';
+@import './components/market-header.scss';
+@import './components/market-trendline.scss';
 
 html {
   font-size: 8px;
@@ -14,14 +19,14 @@ body {
   width: 100vw;
 }
 
-.market-data-demo {
-  flex: 1;
+pre {
+  background: #eee;
+  padding: 2rem;
   overflow: auto;
-
-  pre {
-    background: #eee;
-    padding: 2rem;
-    max-height: 20rem;
-    overflow: auto;
-  }
+  max-height: 20rem;
 }
+
+.market {
+
+}
+

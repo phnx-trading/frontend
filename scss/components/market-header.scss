@@ -1,0 +1,27 @@
+.market-header {
+  display: flex;
+  align-items: center;
+
+  .market-trendline-wrapper {
+    flex: 0 20rem;
+    width: 20rem;
+    height: 10rem;
+  }
+
+  h1 {
+    flex: 1;
+    margin: 0;
+    margin-left: 2rem;
+    padding-top: 2rem;
+    position: relative;
+
+    &:before {
+      content: attr(exchange);
+      position: absolute;
+      top: 0;
+      left: 0;
+      font-size: 1.8rem;
+      font-weight: normal;
+    }
+  }
+}

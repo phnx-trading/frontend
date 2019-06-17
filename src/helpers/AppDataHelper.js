@@ -60,7 +60,7 @@ export const getSymbolOrderbook = (exchange, symbol) => {
 export const getSymbolTicker = (exchange, symbol) => {
   return new Promise((resolve, reject) => {
     $({
-      url: `/exchanges/${ exchange }/markets/${ symbol }/trades`,
+      url: `/exchanges/${ exchange }/markets/${ symbol }/ticker`,
       api: `exchange`,
       success: ({ result }) => resolve(result),
       error: reject

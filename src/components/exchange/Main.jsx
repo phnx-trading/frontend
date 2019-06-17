@@ -2,7 +2,7 @@
 
 import React from 'react';
 import MarketNavigation from './MarketNavigation.jsx';
-import MarketDataDemo from './MarketDataDemo.jsx';
+import MarketDataLayer from './MarketDataLayer.jsx';
 
 class Main extends React.Component {
   constructor(props) {
@@ -20,7 +20,7 @@ class Main extends React.Component {
     return (
       <div className="exchange-main">
         <MarketNavigation exchange={ exchange } symbol={ symbol } />
-        <MarketDataDemo exchange={ exchange } symbol={ symbol } />
+        <MarketDataLayer exchange={ exchange } symbol={ symbol } />
       </div>
     );
   }
