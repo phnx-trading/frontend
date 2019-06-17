@@ -69,7 +69,7 @@ class Main extends React.Component {
             this.state.markets.map((market) => (
               <li 
                 key={ market }
-                className={ this.props.symbol == market && this.state.selectedExchange == this.props.exchange ? `active` : `` }>
+                className={ this.props.symbol.toLowerCase() == market.toLowerCase() && this.state.selectedExchange == this.props.exchange ? `active` : `` }>
                 <Link to={ `/${ this.state.selectedExchange }/${ market }` }>
                   { market }
                 </Link>
