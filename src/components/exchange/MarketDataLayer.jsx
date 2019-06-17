@@ -46,16 +46,23 @@ class MarketDataLayer extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (this.props.symbol !== nextProps.symbol || this.props.exchange !== nextProps.exchange) {
+      clearTimeout(this.getDataTimeout);
       this.setState(this.getInitialState(), () => this.getData(nextProps.exchange, nextProps.symbol));
     }
   }
 
   getData(exchange = this.props.exchange, symbol = this.props.symbol) {
-    getSymbol(exchange, symbol).then((symbolInfo) => this.setState({ symbolInfo, symbolInfoLoaded: true }));
-    getSymbolTrades(exchange, symbol).then((trades) => this.setState({ trades, tradesLoaded: true }));
-    getSymbolOrderbook(exchange, symbol).then((orderbook) => this.setState({ orderbook, orderbookLoaded: true }));
-    getSymbolTicker(exchange, symbol).then((ticker) => this.setState({ ticker, tickerLoaded: true }));
-    getSymbolOHLCV(exchange, symbol).then((ohlcv) => this.setState({ ohlcv, ohlcvLoaded: true }));
+    clearTimeout(this.getDataTimeout);
+
+    Promise.all([
+      getSymbol(exchange, symbol).then((symbolInfo) => this.setState({ symbolInfo, symbolInfoLoaded: true })),
+      getSymbolTrades(exchange, symbol).then((trades) => this.setState({ trades, tradesLoaded: true })),
+      getSymbolOrderbook(exchange, symbol).then((orderbook) => this.setState({ orderbook, orderbookLoaded: true })),
+      getSymbolTicker(exchange, symbol).then((ticker) => this.setState({ ticker, tickerLoaded: true })),
+      getSymbolOHLCV(exchange, symbol).then((ohlcv) => this.setState({ ohlcv, ohlcvLoaded: true }))
+    ]).then(() => {
+      this.getDataTimeout = setTimeout(() => this.getData(), 1000);
+    });
   }
 
   render() {

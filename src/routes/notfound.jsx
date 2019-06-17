@@ -7,7 +7,7 @@ const NotFoundPage = () => {
   return (
     <div className="page-not-found">
       <p>Page not found.</p>
-      <p><Link to="/sites">Click here to view sites</Link></p>
+      <p><Link to="/">Go to home</Link></p>
     </div>
   );
 };
