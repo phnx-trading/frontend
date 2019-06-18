@@ -46,6 +46,7 @@
     "redux-persist": "4.10.2",
     "redux-persist-crosstab": "3.7.0",
     "sass-loader": "4.1.1",
+    "sjcl": "^1.0.8",
     "webpack": "2.2.0",
     "workbox-webpack-plugin": "^4.3.1"
   },

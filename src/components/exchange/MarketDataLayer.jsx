@@ -11,6 +11,7 @@ import {
 import MarketHeader from './MarketHeader.jsx';
 import MarketTrades from './MarketTrades.jsx';
 import MarketOrderbook from './MarketOrderbook.jsx';
+import AccountManager from './AccountManager.jsx';
 
 class MarketDataLayer extends React.Component {
   constructor(props) {
@@ -75,6 +76,10 @@ class MarketDataLayer extends React.Component {
           tickerLoaded={ this.state.tickerLoaded }
           symbolInfo={ this.state.symbolInfo }
           symbolInfoLoaded={ this.state.symbolInfoLoaded } />
+        <div className="market-widget-row">
+          <AccountManager
+            exchange={ this.props.exchange } />
+        </div>
         <div className="market-widget-row">
           <MarketTrades
             trades={ this.state.trades }
