@@ -7,11 +7,15 @@
 
 html {
   font-size: 8px;
+  background: $bg;
+  color: $textColor;
 }
 
 body {
   font-size: 1.75rem;
 }
+
+h1, h2, h3, h4, h5, h6 { color: $textColor; }
 
 .exchange-main {
   display: flex;
@@ -22,13 +26,6 @@ body {
 .number {
   font-family: 'Ubuntu Mono', monospace;
   text-align: right;
-}
-
-pre {
-  background: #eee;
-  padding: 2rem;
-  overflow: auto;
-  max-height: 20rem;
 }
 
 .market {
@@ -83,7 +80,7 @@ pre {
           th {
             position: sticky;
             top: 0;
-            background: white;
+            background: $bg;
           }
 
           th, td {
@@ -107,7 +104,7 @@ pre {
         th {
           position: sticky;
           top: 0;
-          background: white;
+          background: $bg;
         }
 
         th, td {

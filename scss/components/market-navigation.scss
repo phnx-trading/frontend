@@ -12,12 +12,12 @@
     li {
       &.active {
         & > * {
-          color: red;
+          color: $primary;
         }
       }
 
       & > * {
-        color: black;
+        color: $textColor;
         display: block;
         cursor: pointer;
         text-decoration: none;

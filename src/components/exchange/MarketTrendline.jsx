@@ -81,7 +81,7 @@ class MarketTrendline extends React.Component {
           xmlns="http://www.w3.org/2000/svg">
           <polyline
             fill="none"
-            stroke={ `#000` }
+            stroke={ `currentColor` }
             strokeWidth="2"
             points={ points } />
         </svg>
