@@ -54,11 +54,11 @@ class MarketDataLayer extends React.Component {
     clearTimeout(this.getDataTimeout);
 
     Promise.all([
-      getSymbol(exchange, symbol).then((symbolInfo) => this.setState({ symbolInfo, symbolInfoLoaded: true })),
-      getSymbolTrades(exchange, symbol).then((trades) => this.setState({ trades, tradesLoaded: true })),
-      getSymbolOrderbook(exchange, symbol).then((orderbook) => this.setState({ orderbook, orderbookLoaded: true })),
-      getSymbolTicker(exchange, symbol).then((ticker) => this.setState({ ticker, tickerLoaded: true })),
-      getSymbolOHLCV(exchange, symbol).then((ohlcv) => this.setState({ ohlcv, ohlcvLoaded: true }))
+      getSymbol(exchange, symbol).then((symbolInfo) => this.setState({ symbolInfo: symbolInfo || { }, symbolInfoLoaded: symbolInfo !== null })),
+      getSymbolTrades(exchange, symbol).then((trades) => this.setState({ trades: trades || [], tradesLoaded: trades !== null })),
+      getSymbolOrderbook(exchange, symbol).then((orderbook) => this.setState({ orderbook: orderbook || {}, orderbookLoaded: orderbook !== null })),
+      getSymbolTicker(exchange, symbol).then((ticker) => this.setState({ ticker: ticker || { }, tickerLoaded: ticker !== null })),
+      getSymbolOHLCV(exchange, symbol).then((ohlcv) => this.setState({ ohlcv: ohlcv || [], ohlcvLoaded: ohlcv !== null }))
     ]).then(() => {
       this.getDataTimeout = setTimeout(() => this.getData(), 1000);
     });
