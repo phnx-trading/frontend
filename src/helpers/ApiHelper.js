@@ -43,6 +43,8 @@ const $ = (options) => {
     `${ API_URL }${ options.url }${ paramString }`
   );
 
+  request.setRequestHeader(`Content-Type`, `application/json`);
+
   request.send(JSON.stringify(body) || undefined);
 };
 

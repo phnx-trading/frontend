@@ -76,10 +76,12 @@ class MarketDataLayer extends React.Component {
           tickerLoaded={ this.state.tickerLoaded }
           symbolInfo={ this.state.symbolInfo }
           symbolInfoLoaded={ this.state.symbolInfoLoaded } />
-        <div className="market-widget-row">
-          <AccountManager
-            exchange={ this.props.exchange } />
-        </div>
+        <AccountManager
+          symbol={ this.props.symbol }
+          exchange={ this.props.exchange }
+          ticker={ this.state.ticker }
+          tickerLoaded={ this.state.tickerLoaded }
+          exchange={ this.props.exchange } />
         <div className="market-widget-row">
           <MarketTrades
             trades={ this.state.trades }

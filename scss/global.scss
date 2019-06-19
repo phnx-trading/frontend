@@ -36,6 +36,20 @@ pre {
 
   .market-widget-row {
     display: flex;
+
+    &.account-manager {
+      & > * {
+        flex: 1;
+      }
+
+      .account-list {
+        td {
+          max-width: 10rem;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+    }
   }
 
   .orderbook {
